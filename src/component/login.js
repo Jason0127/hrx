@@ -27,11 +27,15 @@ function Transition(props) {
 	return <Slide direction="down" {...props} />;
 }
 
-const AlertDialogSlide =()=> {
+const AlertDialogSlide =(props)=> {
+	const [user, setUser] = React.useState({
+		userName: 'admin',
+		pass: 'admin'
+	})
 	const classes = useStyles();
 	const [values, setValues] = React.useState({
 		name: '',
-		password: 'asd'
+		password: ''
 	});
 
 	const myStyle ={
@@ -41,15 +45,18 @@ const AlertDialogSlide =()=> {
 		}
 	}
 
-	const handleChange = name => event => {
-		setValues({ ...values, [name]: event.target.value });
-		console.log(event.target.value)
-		console.log(name)
-		console.log(values)
-	};
-	const handleChange1 =(password) => event => {
-		setValues({...values, [password]: event.target.value});
+	const handleChange = (e, name)=>{
+		let handleValues = {
+			...values
+		}
+
+		handleValues[name] = e.target.value
+
+		setValues({
+			...handleValues
+		})
 	}
+	
 	const [open, setOpen] = React.useState(false);
 	const handleClickOpen=()=> {
 		setOpen(true);
@@ -59,7 +66,10 @@ const AlertDialogSlide =()=> {
 		setOpen(false);
 	}
 	const handleLogin =()=>{
-
+		console.log(values, user)
+		if(user.userName == values.name && user.pass == values.password){
+			props.history.push('/portal')
+		}
 	}
 
 	return (
@@ -81,17 +91,10 @@ const AlertDialogSlide =()=> {
 					<form noValidate autoComplete="off">
 						<Grid item xs={12} sm={12}>
 							<TextField
-								error={true}
 								id="standard-name"
-								label="Name"
-								value={values.name}
-								onChange={handleChange('name')}
-								margin="normal"
-								defaultValue=''
-								placeholder="asdasdasd"
-								required={true}
-								multiline={23}
-								variant='filled'
+								label="UserName"
+								// value={values.name}
+								onChange={(e)=>handleChange(e, 'name')}
 							/>
 						</Grid>
 						<Grid item xs={12} sm={12}>
@@ -99,9 +102,8 @@ const AlertDialogSlide =()=> {
 								id="standard-password-input"
 								label="Password"
 								type="password"
-								value={values.password}
-								onChange={handleChange1('password')}
-								margin="normal"
+								// value={values.password}
+								onChange={(e)=>handleChange(e, 'password')}
 							/>
 						</Grid>
 					</form>
@@ -110,7 +112,7 @@ const AlertDialogSlide =()=> {
 						<Button onClick={handleClose} color="primary">
 							Cancel
 						</Button>
-						<Button onClick={handleClose} color="primary">
+						<Button onClick={()=>handleLogin()} color="primary">
 							Login
 						</Button>
 					</DialogActions>

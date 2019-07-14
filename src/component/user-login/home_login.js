@@ -4,7 +4,9 @@ import adds from '../../img/ads.svg'
 import order from '../../img/order-history.png'
 import track from '../../img/trak-shipments-icon.png'
 import allimg from '../../img/terms.png'
-import invoice from '../../img/invoice-icon.png'
+import invoice from '../../img/invoice-icon.png';
+import vawd from '../../img/VAWD-LOGO.png';
+import shop from '../../img/SHOP-01.png';
 import {
     AppBar, 
     Toolbar, 
@@ -37,10 +39,31 @@ const myStyle = {
         marginTop: 'calc(3vmin + 50px)',
         position: 'absolute',
         top: '3em'
+    },
+    menuIcon: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    menuItem: {
+        width: '76px', 
+        height: '87px', 
+        marginTop: '1rem', 
+        marginBottom: '1rem',
+        marginRight: '10rem'
     }
 }
 
 class Login extends Component{
+
+    shop = ()=>{
+        this.props.history.push('/portal')
+    }
+
+    cart = ()=>{
+        this.props.history.push('/cart')
+    }
+
     render(){
         return(
             <div>
@@ -52,10 +75,12 @@ class Login extends Component{
                             </div>
                         </Grid>
                         <Grid item lg={7}>
-                            <img src={adds} style={myStyle.addStyle}/>
+                            <img src={adds} style={myStyle.addStyle} alt="img"/>
                         </Grid>
                         <Grid item lg={2}>
-                            <i class="fas fa-shopping-cart"></i>
+                            <div style={{display: 'inline-block', cursor: 'pointer'}} onClick={()=>this.cart()}>
+                                <i className="fas fa-shopping-cart"></i>
+                            </div>
                             <Button color="primary" style={{marginLeft: 'calc(8vmin + 10px)'}}>Logout</Button>
                         </Grid>
                     </Toolbar>
@@ -89,28 +114,32 @@ class Login extends Component{
                     </section>
 
                     <section id="links">
-                        <Grid item lg={12} style={{backgroundColor: '#3cc4c9'}}>
-                            <ul style={{listStyle: 'none', display: 'flex', justifyContent: 'center'}}>
-                                <li style={{display: 'inline-block',}}>
-                                    <a href="#">
-                                        <img src={order} />
-                                    </a>
-                                </li>
-                                <li style={{display: 'inline-block', marginRight: '20vmax', marginLeft: '20vmax'}}>
-                                    <a href="#">
-                                        <img src={track} />
-                                    </a>
-                                </li>
-                                <li style={{display: 'inline-block'}}>
-                                    <a href="#">
-                                        <img src={invoice} />
-                                    </a>
-                                </li>
-                            </ul>
+                        <Grid item lg={12} style={{backgroundColor: '#3cc4c9', ...myStyle.menuIcon}}>
+                            <div style={myStyle.menuItem}>
+                                <img src={order} style={{width: '100%', height: '100%'}}/>
+                            </div>
+                            <div style={myStyle.menuItem}> 
+                                <img src={invoice} style={{width: '100%', height: '90%'}}/>
+                            </div>
+                            <div style={myStyle.menuItem}>
+                                <img src={track} style={{width: '100%', height: '90%'}}/>
+                            </div>
+                            <div style={{...myStyle.menuItem, marginRight: '0px', cursor: 'pointer'}} onClick={()=>this.shop()}>
+                                <img src={shop} style={{width: '100%', height: '100%'}}/>
+                            </div>
                         </Grid>
 
                         <Grid item lg={12} align="center">
-                            <img src={allimg} />
+                            <img src={allimg} alt=""/>
+                        </Grid>
+                        <Grid item lg={12} style={{marginLeft: '50px', marginTop: '20px'}}>
+                            <div style={{width: '200px', display: 'inline-block'}}>
+                                <img src={vawd} alt="" style={{width: '100%', height: 'auto'}}/>
+                            </div>
+                            <a href="#?" style={{display: 'inline-block'}}>
+                                    Hercules Pharmaceuticals <br />
+                                    Has been awarded VAWD Accreditation
+                                </a>
                         </Grid>
                     </section>
                 </main>

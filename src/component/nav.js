@@ -14,7 +14,7 @@ import Zoom from 'react-reveal/Zoom';
 import Spin from 'react-reveal/Spin';
 // import Button from '@material-ui/core/Button';
 import AlertDialogSlide from './login'
-import { ENTERED } from 'react-transition-group/Transition';
+// import { ENTERED } from 'react-transition-group/Transition';
 
 
 const myStyle= {
@@ -123,7 +123,7 @@ class NavTabs extends Component {
 											<Tab label="Contact Us" to="/contact" component={NavLink} style={myStyle.awidth} className="h-color-blue"></Tab>
 										</Grid>
 										<Grid item lg={1} md={1}>
-											<AlertDialogSlide/>
+											<AlertDialogSlide {...this.props}/>
 										</Grid>
 									</Tabs>
 								)

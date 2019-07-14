@@ -45,12 +45,13 @@ const styles ={
     }
 }
 
-const Home = () => {
+const Home = (props) => {
+    console.log(props)
     return (
         <div>
             <div className="homep">
                 {/* <Mask> */}
-                    <NavTabs/>
+                    <NavTabs {...props}/>
                     {/* <Fade top cascade> */}
                    
                         <div className="positions">

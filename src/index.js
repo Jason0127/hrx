@@ -12,8 +12,9 @@ import PartnerShip from './component/partnershp';
 import Responsibility from './component/responsibility';
 import News from './component/news';
 import Productsrv from './component/pdct&srvc';
-import Login from './component/login/home_login';
-import Product from './component/login/product'
+import Login from './component/user-login/home_login';
+import Portal from './component/user-login/portal';
+import Cart from './component/user-login/cart';
 
 class Index extends Component{
     constructor(props){
@@ -33,8 +34,9 @@ class Index extends Component{
                         <Route path="/partnership" component={PartnerShip}/>
                         <Route path="/news" component={News}/>
                         <Route path="/product&services" component={Productsrv}/>
-                        <Route path="/user-login" component={Login}/>
-                        <Route path="/product" component={Product} />
+                        <Route path="/home" component={Login}/>
+                        <Route path="/portal" component={Portal} />
+                        <Route path="/cart" component={Cart} />
                         <Route path="/" exact component={Home}/>
                     </Switch>
                 </BrowserRouter>
@@ -45,4 +47,4 @@ class Index extends Component{
 }
 
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(<Index />, document.querySelector('#root'));
