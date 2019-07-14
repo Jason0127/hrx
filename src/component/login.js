@@ -66,7 +66,7 @@ const AlertDialogSlide =(props)=> {
 		setOpen(false);
 	}
 	const handleLogin =()=>{
-		console.log(values, user)
+		console.log(props)
 		if(user.userName == values.name && user.pass == values.password){
 			props.history.push('/portal')
 		}

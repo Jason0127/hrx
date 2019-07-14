@@ -104,7 +104,7 @@ class NavTabs extends Component {
 														<Button to="/partnership" component={NavLink} className="py-3" style={myStyle.block}>Partnership</Button>
 														<Button to="/responsibility" component={NavLink} className="py-3" style={myStyle.block}>News</Button>
 														<Button to="/contact" component={NavLink} className="py-3" style={myStyle.block}>Contact Us</Button>
-														<div><AlertDialogSlide {...this.props}/></div>
+														<AlertDialogSlide {...this.props}/>
 													</Zoom>
 												</React.Fragment>
 											)}
